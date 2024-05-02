@@ -3,7 +3,9 @@ import { Route, Routes, Link } from 'react-router-dom';
 import { appsData, productsData } from './data.js';
 import Home from './pages/Home';
 import ProductsPage from './pages/Products';
+import About from './pages/About'
 import './App.css';
+
 
 export default function App() {
   const [products, setProducts] = useState(productsData);
@@ -12,7 +14,9 @@ export default function App() {
   console.log({ products, apps });
 
   return (
-    <div className="App">
+
+    <>
+        <div className="App">
       <header>
         <h1>Apple Shop</h1>
         <nav>
@@ -23,16 +27,32 @@ export default function App() {
             <li>
               <Link to="/products">Products</Link>
             </li>
+            <li>
+              <Link to="/about"> About </Link>
+            </li>
           </ul>
         </nav>
       </header>
+
+
       <Routes>
         <Route
           path="/products"
           element={<ProductsPage products={products} />}
         />
-        <Route path="/" element={<Home />} />
+        <Route 
+          path="/" 
+          element={<Home />} 
+        />
+
+        <Route
+        path="/about"
+        element={<About />}
+        />
       </Routes>
     </div>
+    
+    </>
+    
   );
 }
